@@ -1,7 +1,6 @@
 package com.aditya.jetpractice
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -15,12 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.aditya.jetpractice.components.ScaffoldActivity
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
 class MainActivity : ComponentActivity() {
     private val components = listOf(
-        "Scaffold",
-        "Component 2"
+        Component.Scaffold
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +28,16 @@ class MainActivity : ComponentActivity() {
             JetPracticeTheme {
                 LazyColumn {
                     items(components) {
-                        ListItem(it) {
-                            Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-                        }
+                        ListItem(it.title) { navigateToComponentActivity(it) }
                     }
                 }
             }
+        }
+    }
+
+    private fun navigateToComponentActivity(component: Component) {
+        when (component) {
+            Component.Scaffold -> startActivity(ScaffoldActivity.getIntent(this))
         }
     }
 
@@ -49,4 +52,11 @@ class MainActivity : ComponentActivity() {
             Divider()
         }
     }
+}
+
+
+enum class Component(
+    val title: String
+) {
+    Scaffold(title = "Scaffold")
 }
