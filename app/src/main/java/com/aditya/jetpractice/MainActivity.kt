@@ -15,13 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aditya.jetpractice.components.AppBarActivity
+import com.aditya.jetpractice.components.ButtonActivity
 import com.aditya.jetpractice.components.ScaffoldActivity
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
 class MainActivity : ComponentActivity() {
     private val components = listOf(
         Component.Scaffold,
-        Component.AppBar
+        Component.AppBar,
+        Component.Button
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,7 @@ class MainActivity : ComponentActivity() {
         when (component) {
             Component.Scaffold -> startActivity(ScaffoldActivity.getIntent(this))
             Component.AppBar -> startActivity(AppBarActivity.getIntent(this))
+            Component.Button -> startActivity(ButtonActivity.getIntent(this))
         }
     }
 
@@ -62,5 +65,6 @@ enum class Component(
     val title: String
 ) {
     Scaffold(title = "Scaffold"),
-    AppBar(title = "AppBar")
+    AppBar(title = "AppBar"),
+    Button(title = "Button")
 }
