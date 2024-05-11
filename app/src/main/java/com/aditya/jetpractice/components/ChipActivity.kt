@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -47,16 +48,20 @@ class ChipActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetPracticeTheme {
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    AssistChipComposable()
-                    FilterChipComposable()
-                    InputChipComposable {
+                BasicScaffold(title = "Chips") { innerPadding ->
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                    ) {
+                        AssistChipComposable()
+                        FilterChipComposable()
+                        InputChipComposable {
+                        }
+                        SuggestionChipComposable()
                     }
-                    SuggestionChipComposable()
                 }
             }
         }

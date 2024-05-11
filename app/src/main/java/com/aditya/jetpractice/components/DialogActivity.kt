@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.AlertDialog
@@ -18,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
 class DialogActivity : ComponentActivity() {
@@ -33,18 +36,21 @@ class DialogActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetPracticeTheme {
-                DialogComposable()
+                BasicScaffold(title = "Dialog") { padding ->
+                    DialogComposable(padding)
+                }
             }
         }
     }
 
     @Composable
-    private fun DialogComposable() {
+    private fun DialogComposable(padding: PaddingValues) {
         var dismiss by remember {
             mutableStateOf(false)
         }
         if (dismiss) return
         AlertDialog(
+            modifier = Modifier.padding(padding),
             icon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Email") },
             title = { Text(text = "This is title") },
             text = { Text(text = "This is dialog text") },

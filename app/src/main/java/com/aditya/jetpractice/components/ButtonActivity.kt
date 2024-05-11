@@ -48,20 +48,10 @@ class ButtonActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     private fun ButtonComposable() {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "Buttons") },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.primary
-                    )
-                )
-            }
-        ) {
+        BasicScaffold(title = "Buttons") { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(it)
+                    .padding(innerPadding)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(12.dp)

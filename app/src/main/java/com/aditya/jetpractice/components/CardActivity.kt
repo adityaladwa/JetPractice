@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,18 +35,20 @@ class CardActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetPracticeTheme {
-                CardComposable()
+                BasicScaffold(title = "Card") { innerPadding ->
+                    CardComposable(innerPadding)
+                }
             }
         }
     }
 
     @Composable
-    private fun CardComposable() {
+    private fun CardComposable(innerPadding: PaddingValues) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .padding(16.dp),
+                .padding(innerPadding),
             contentAlignment = Alignment.Center
         ) {
             Card(
