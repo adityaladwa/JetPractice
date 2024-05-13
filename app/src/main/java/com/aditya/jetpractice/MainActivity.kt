@@ -21,6 +21,7 @@ import com.aditya.jetpractice.components.ChipActivity
 import com.aditya.jetpractice.components.DialogActivity
 import com.aditya.jetpractice.components.ProgressIndicatorActivity
 import com.aditya.jetpractice.components.ScaffoldActivity
+import com.aditya.jetpractice.components.SliderActivity
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +32,8 @@ class MainActivity : ComponentActivity() {
         Component.Card,
         Component.Chip,
         Component.Dialog,
-        Component.ProgressIndicator
+        Component.ProgressIndicator,
+        Component.Slider
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +58,7 @@ class MainActivity : ComponentActivity() {
             Component.Chip -> startActivity(ChipActivity.getIntent(this))
             Component.Dialog -> startActivity(DialogActivity.getIntent(this))
             Component.ProgressIndicator -> startActivity(ProgressIndicatorActivity.getIntent(this))
+            Component.Slider -> startActivity(SliderActivity.getIntent(this))
         }
     }
 
@@ -84,4 +87,5 @@ enum class Component(
     Chip(title = "Chip"),
     Dialog(title = "Dialog"),
     ProgressIndicator(title = "Progress Indicator"),
+    Slider(title = "Slider")
 }
