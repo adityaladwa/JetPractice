@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.aditya.jetpractice.components.AppBarActivity
+import com.aditya.jetpractice.components.BottomSheetActivity
 import com.aditya.jetpractice.components.ButtonActivity
 import com.aditya.jetpractice.components.CardActivity
 import com.aditya.jetpractice.components.CheckBoxActivity
@@ -37,7 +38,8 @@ class MainActivity : ComponentActivity() {
         Component.ProgressIndicator,
         Component.Slider,
         Component.Switch,
-        Component.Checkbox
+        Component.Checkbox,
+        Component.BottomSheet
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +67,7 @@ class MainActivity : ComponentActivity() {
             Component.Slider -> startActivity(SliderActivity.getIntent(this))
             Component.Switch -> startActivity(SwitchActivity.getIntent(this))
             Component.Checkbox -> startActivity(CheckBoxActivity.getIntent(this))
+            Component.BottomSheet -> startActivity(BottomSheetActivity.getIntent(this))
         }
     }
 
@@ -95,5 +98,6 @@ enum class Component(
     ProgressIndicator(title = "Progress Indicator"),
     Slider(title = "Slider"),
     Switch(title = "Switch"),
-    Checkbox(title = "Checkbox")
+    Checkbox(title = "Checkbox"),
+    BottomSheet(title = "Bottom Sheet")
 }
