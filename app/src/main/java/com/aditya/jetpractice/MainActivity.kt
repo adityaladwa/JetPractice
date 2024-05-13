@@ -22,6 +22,7 @@ import com.aditya.jetpractice.components.DialogActivity
 import com.aditya.jetpractice.components.ProgressIndicatorActivity
 import com.aditya.jetpractice.components.ScaffoldActivity
 import com.aditya.jetpractice.components.SliderActivity
+import com.aditya.jetpractice.components.SwitchActivity
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +34,8 @@ class MainActivity : ComponentActivity() {
         Component.Chip,
         Component.Dialog,
         Component.ProgressIndicator,
-        Component.Slider
+        Component.Slider,
+        Component.Switch
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +61,7 @@ class MainActivity : ComponentActivity() {
             Component.Dialog -> startActivity(DialogActivity.getIntent(this))
             Component.ProgressIndicator -> startActivity(ProgressIndicatorActivity.getIntent(this))
             Component.Slider -> startActivity(SliderActivity.getIntent(this))
+            Component.Switch -> startActivity(SwitchActivity.getIntent(this))
         }
     }
 
@@ -87,5 +90,6 @@ enum class Component(
     Chip(title = "Chip"),
     Dialog(title = "Dialog"),
     ProgressIndicator(title = "Progress Indicator"),
-    Slider(title = "Slider")
+    Slider(title = "Slider"),
+    Switch(title = "Switch")
 }
