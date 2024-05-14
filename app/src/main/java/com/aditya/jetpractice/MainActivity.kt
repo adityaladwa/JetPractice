@@ -25,6 +25,7 @@ import com.aditya.jetpractice.components.NavigationDrawerActivity
 import com.aditya.jetpractice.components.ProgressIndicatorActivity
 import com.aditya.jetpractice.components.ScaffoldActivity
 import com.aditya.jetpractice.components.SliderActivity
+import com.aditya.jetpractice.components.SnackBarActivity
 import com.aditya.jetpractice.components.SwitchActivity
 import com.aditya.jetpractice.ui.theme.JetPracticeTheme
 
@@ -41,7 +42,8 @@ class MainActivity : ComponentActivity() {
         Component.Switch,
         Component.Checkbox,
         Component.BottomSheet,
-        Component.NavigationDrawer
+        Component.NavigationDrawer,
+        Component.SnackBar
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +73,7 @@ class MainActivity : ComponentActivity() {
             Component.Checkbox -> startActivity(CheckBoxActivity.getIntent(this))
             Component.BottomSheet -> startActivity(BottomSheetActivity.getIntent(this))
             Component.NavigationDrawer -> startActivity(NavigationDrawerActivity.getIntent(this))
+            Component.SnackBar -> startActivity(SnackBarActivity.getIntent(this))
         }
     }
 
@@ -103,5 +106,6 @@ enum class Component(
     Switch(title = "Switch"),
     Checkbox(title = "Checkbox"),
     BottomSheet(title = "Bottom Sheet"),
-    NavigationDrawer(title = "Navigation Drawer")
+    NavigationDrawer(title = "Navigation Drawer"),
+    SnackBar(title = "Snackbar")
 }
