@@ -3,8 +3,10 @@ package com.aditya.jetpractice
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,12 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.aditya.jetpractice.components.AppBarActivity
+import com.aditya.jetpractice.components.BasicScaffold
 import com.aditya.jetpractice.components.BottomSheetActivity
 import com.aditya.jetpractice.components.ButtonActivity
 import com.aditya.jetpractice.components.CardActivity
 import com.aditya.jetpractice.components.CheckBoxActivity
 import com.aditya.jetpractice.components.ChipActivity
 import com.aditya.jetpractice.components.DialogActivity
+import com.aditya.jetpractice.components.LazyListActivity
 import com.aditya.jetpractice.components.NavigationDrawerActivity
 import com.aditya.jetpractice.components.ProgressIndicatorActivity
 import com.aditya.jetpractice.components.ScaffoldActivity
@@ -43,18 +47,27 @@ class MainActivity : ComponentActivity() {
         Component.Checkbox,
         Component.BottomSheet,
         Component.NavigationDrawer,
-        Component.SnackBar
+        Component.SnackBar,
+        Component.LazyList
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             JetPracticeTheme {
-                LazyColumn {
-                    items(components) {
-                        ListItem(it.title) { navigateToComponentActivity(it) }
-                    }
+                BasicScaffold(title = "Components") {
+                    ContentComposable(it)
                 }
+            }
+        }
+    }
+
+    @Composable
+    private fun ContentComposable(paddingValues: PaddingValues) {
+        LazyColumn(contentPadding = paddingValues) {
+            items(components) {
+                ListItem(it.title) { navigateToComponentActivity(it) }
             }
         }
     }
@@ -74,6 +87,7 @@ class MainActivity : ComponentActivity() {
             Component.BottomSheet -> startActivity(BottomSheetActivity.getIntent(this))
             Component.NavigationDrawer -> startActivity(NavigationDrawerActivity.getIntent(this))
             Component.SnackBar -> startActivity(SnackBarActivity.getIntent(this))
+            Component.LazyList -> startActivity(LazyListActivity.getIntent(this))
         }
     }
 
@@ -107,5 +121,6 @@ enum class Component(
     Checkbox(title = "Checkbox"),
     BottomSheet(title = "Bottom Sheet"),
     NavigationDrawer(title = "Navigation Drawer"),
-    SnackBar(title = "Snackbar")
+    SnackBar(title = "Snackbar"),
+    LazyList(title = "Lazy List")
 }
