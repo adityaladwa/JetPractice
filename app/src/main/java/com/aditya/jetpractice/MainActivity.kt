@@ -24,6 +24,8 @@ import com.aditya.jetpractice.components.CardActivity
 import com.aditya.jetpractice.components.CheckBoxActivity
 import com.aditya.jetpractice.components.ChipActivity
 import com.aditya.jetpractice.components.DialogActivity
+import com.aditya.jetpractice.components.LazyGridActivity
+import com.aditya.jetpractice.components.LazyGridStaggeredActivity
 import com.aditya.jetpractice.components.LazyListActivity
 import com.aditya.jetpractice.components.NavigationDrawerActivity
 import com.aditya.jetpractice.components.ProgressIndicatorActivity
@@ -48,7 +50,9 @@ class MainActivity : ComponentActivity() {
         Component.BottomSheet,
         Component.NavigationDrawer,
         Component.SnackBar,
-        Component.LazyList
+        Component.LazyList,
+        Component.LazyGrid,
+        Component.LazyGridStaggered
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,6 +92,8 @@ class MainActivity : ComponentActivity() {
             Component.NavigationDrawer -> startActivity(NavigationDrawerActivity.getIntent(this))
             Component.SnackBar -> startActivity(SnackBarActivity.getIntent(this))
             Component.LazyList -> startActivity(LazyListActivity.getIntent(this))
+            Component.LazyGrid -> startActivity(LazyGridActivity.getIntent(this))
+            Component.LazyGridStaggered -> startActivity(LazyGridStaggeredActivity.getIntent(this))
         }
     }
 
@@ -122,5 +128,7 @@ enum class Component(
     BottomSheet(title = "Bottom Sheet"),
     NavigationDrawer(title = "Navigation Drawer"),
     SnackBar(title = "Snackbar"),
-    LazyList(title = "Lazy List")
+    LazyList(title = "Lazy List"),
+    LazyGrid(title = "Lazy Grid"),
+    LazyGridStaggered(title = "Lazy Grid Staggered")
 }
